@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-page = 10
+page = 35
 while True :
     url = "https://redacted.ch/ajax.php?action=requests&media[]=7&bitrates[]=8&page="+str(page)
     payload = {}
@@ -39,9 +39,9 @@ while True :
                                         print("discogsId: ",discogsIds)           
                                         print(respDataMPstats['lowest_price']['value'],respDataMPstats['lowest_price']['currency'])                        
                                         print("Good value?!!!!")
+                                        print("--------------------------------------------")
                                 except KeyError:
-                                    print("key error skipping")
-                                print("--------------------------------------------")
+                                    print("key error skipping")                                
                     except ValueError:
                         print("Int conversion error skipping")
                     
