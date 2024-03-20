@@ -9,7 +9,7 @@ import logging
 load_dotenv()
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename='bountyHunter.log', encoding='utf-8', level=logging.DEBUG)
+logging.basicConfig(filename='bountyHunter.log', encoding='utf-8', level=logging.INFO)
 page = 35
 while True :
     url = "https://redacted.ch/ajax.php?action=requests&media[]=7&bitrates[]=8&page="+str(page)
@@ -38,11 +38,11 @@ while True :
                                 respDataMPstats = json.loads(responseMPStats.text)
                                 try: 
                                     if respDataMPstats['lowest_price']['value'] < rewordInGB:
-                                        logger.info("RequId: ",requestId,"Bounty: ", rewordInGB,"GB")
-                                        print("RequId: ",requestId,"Bounty: ", rewordInGB,"GB")
-                                        logger.info("discogsId: ",discogsIds)
+                                        logger.info("RequId: " + str(requestId) + " Bounty: " + str(rewordInGB) + "GB")
+                                        print("RequId: " + str(requestId) + "Bounty: " + str(rewordInGB) + "GB")
+                                        logger.info("discogsId: " + str(discogsIds))
                                         print("discogsId: ",discogsIds)      
-                                        logger.info(respDataMPstats['lowest_price']['value'],respDataMPstats['lowest_price']['currency'])     
+                                        logger.info(str(respDataMPstats['lowest_price']['value']) + str(respDataMPstats['lowest_price']['currency']))     
                                         print(respDataMPstats['lowest_price']['value'],respDataMPstats['lowest_price']['currency'])         
                                         logger.info("Good value!")      
                                         logger.info("--------------------------------------")         
