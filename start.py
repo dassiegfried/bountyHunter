@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-page = 8
+page = 10
 while True :
     url = "https://redacted.ch/ajax.php?action=requests&media[]=7&bitrates[]=8&page="+str(page)
     payload = {}
@@ -33,11 +33,14 @@ while True :
                                 time.sleep(1)
                                 responseMPStats = requests.request("GET", "https://api.discogs.com/marketplace/stats/"+discogsIds+"?curr_abbr=EUR", headers={}, data={})
                                 respDataMPstats = json.loads(responseMPStats.text)
-                                if respDataMPstats['lowest_price']['value'] < rewordInGB:
-                                    print("RequId: ",requestId,"Bounty: ", rewordInGB,"GB")
-                                    print("discogsId: ",discogsIds)           
-                                    print(respDataMPstats['lowest_price']['value'],respDataMPstats['lowest_price']['currency'])                        
-                                    print("Good value?!!!!")
+                                try: 
+                                    if respDataMPstats['lowest_price']['value'] < rewordInGB:
+                                        print("RequId: ",requestId,"Bounty: ", rewordInGB,"GB")
+                                        print("discogsId: ",discogsIds)           
+                                        print(respDataMPstats['lowest_price']['value'],respDataMPstats['lowest_price']['currency'])                        
+                                        print("Good value?!!!!")
+                                except KeyError:
+                                    print("key error skipping")
                                 print("--------------------------------------------")
                     except ValueError:
                         print("Int conversion error skipping")
