@@ -37,7 +37,23 @@ while True :
                                 responseMPStats = requests.request("GET", "https://api.discogs.com/marketplace/stats/"+discogsIds+"?curr_abbr=EUR", headers={}, data={})
                                 respDataMPstats = json.loads(responseMPStats.text)
                                 try: 
-                                    if respDataMPstats['lowest_price']['value'] < rewordInGB:
+                                    if release.formats[0]["name"] == "Vinyl":
+                                         tmpRewardGb = rewordInGB - 15
+                                         if respDataMPstats['lowest_price']['value'] < tmpRewardGb:
+                                            print("vinyl release adding shipping cost")                                            
+                                            logger.info("RequId: " + str(requestId) + " Bounty: " + str(rewordInGB) + "GB")
+                                            print("RequId: " + str(requestId) + "Bounty: " + str(rewordInGB) + "GB")
+                                            logger.info("discogsId: " + str(discogsIds))
+                                            print("discogsId: ",discogsIds)      
+                                            print(release.formats)
+                                            logger.info(release.formats)
+                                            logger.info(str(respDataMPstats['lowest_price']['value']) + str(respDataMPstats['lowest_price']['currency']))     
+                                            print(respDataMPstats['lowest_price']['value'],respDataMPstats['lowest_price']['currency'])         
+                                            logger.info("Good value!")      
+                                            logger.info("--------------------------------------")         
+                                            print("Good value?!!!!")
+                                            print("--------------------------------------------")
+                                    elif respDataMPstats['lowest_price']['value'] <  rewordInGB:
                                         logger.info("RequId: " + str(requestId) + " Bounty: " + str(rewordInGB) + "GB")
                                         print("RequId: " + str(requestId) + "Bounty: " + str(rewordInGB) + "GB")
                                         logger.info("discogsId: " + str(discogsIds))
