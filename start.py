@@ -72,6 +72,6 @@ while True :
                         print("Int conversion error skipping")
                     
     print("Page:",page)
-    logger.info("Page: " + page)
+    logger.info("Page: " + str(page))
     page = page + 1
     
