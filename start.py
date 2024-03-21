@@ -42,6 +42,8 @@ while True :
                                         print("RequId: " + str(requestId) + "Bounty: " + str(rewordInGB) + "GB")
                                         logger.info("discogsId: " + str(discogsIds))
                                         print("discogsId: ",discogsIds)      
+                                        print(release.formats)
+                                        logger.info(release.formats)
                                         logger.info(str(respDataMPstats['lowest_price']['value']) + str(respDataMPstats['lowest_price']['currency']))     
                                         print(respDataMPstats['lowest_price']['value'],respDataMPstats['lowest_price']['currency'])         
                                         logger.info("Good value!")      
@@ -54,5 +56,6 @@ while True :
                         print("Int conversion error skipping")
                     
     print("Page:",page)
+    logger.info("Page: " + page)
     page = page + 1
     
