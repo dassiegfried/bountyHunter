@@ -15,7 +15,15 @@ while currentBlock < 3191339:
     url = "http://10.0.0.34:8081/api/block/"+str(currentBlock)
     payload = {}
     headers = {}
-    response = requests.request("GET", url, headers=headers, data=payload)
+    response = ""
+    while response == "":
+        try:
+            response = requests.request("GET", url, headers=headers, data=payload)
+            break
+        except:
+            print("error on request sleeping and retrying")
+            time.sleep(5)
+            continue
     respData = json.loads(response.text)
     logger.info("Current Block: "+str(currentBlock))
     print("Current Block: "+str(currentBlock))
