@@ -2,6 +2,7 @@
 import json
 import requests
 import logging
+import time
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='xmrBettingAnanalysis.log', encoding='utf-8', level=logging.INFO)
@@ -10,6 +11,7 @@ totalBackWins=0
 currentBlock = 1
 totalTies=0
 while currentBlock < 3191339:
+    time.sleep(1)
     url = "http://10.0.0.34:8081/api/block/"+str(currentBlock)
     payload = {}
     headers = {}
