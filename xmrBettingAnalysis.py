@@ -16,7 +16,7 @@ totalBackWins=0
 currentBlock = 1
 totalTies=0
 while currentBlock < 3191339:
-    url = "https://xmrchain.net/api/block/"+str(currentBlock)
+    url = "http://10.0.0.34:8081/api/block/"+str(currentBlock)
     payload = {}
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
