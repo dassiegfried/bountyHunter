@@ -1,11 +1,7 @@
-import discogs_client
-import time
+
 import json
 import requests
-from urlextract import URLExtract
 from dotenv import load_dotenv
-import os
-import math
 import logging
 load_dotenv()
 
