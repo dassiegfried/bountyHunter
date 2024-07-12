@@ -3,7 +3,6 @@ import json
 import requests
 from dotenv import load_dotenv
 import logging
-load_dotenv()
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='xmrBettingAnanalysis.log', encoding='utf-8', level=logging.INFO)
